@@ -1,21 +1,13 @@
+import '../App.css';
 import React from "react";
 import {
     Center, Heading, Box, SimpleGrid,
     Image, Grid, GridItem, Text, Container
 } from "@chakra-ui/react";
-// import Carousel from 'react-elastic-carousel';
+import Carousel from 'react-elastic-carousel';
 import Card from "../CaroselItem1"
 import CaroselItem1 from "../CaroselItem1"
-import Carousel from 'carousel-react-rcdev'
-
-    
-    
-
-
-    
-
-
-        
+// import Carousel from 'carousel-react-rcd
 
 
   
@@ -31,8 +23,6 @@ function Home() {
     ]
     return (
         <>
-
-
             <Center>
                 <Heading className="font-link"
                     fontWeight={400}
@@ -40,15 +30,9 @@ function Home() {
                 >Store Near Me</Heading>
             </Center>
             
-            <Carousel breakPoints={breakPoints}  >
-        <img src='https://via.placeholder.com/150' alt='imagem' title='imagem' />
-        <img src='https://via.placeholder.com/150' alt='imagem' title='imagem' />
-        <img src='https://via.placeholder.com/150' alt='imagem' title='imagem' />
-        <img src='https://via.placeholder.com/150' alt='imagem' title='imagem' />
-        <img src='https://via.placeholder.com/150' alt='imagem' title='imagem' />
-    </Carousel>
+         
 
-            {/* <Carousel breakPoints={breakPoints} background="black">
+            <Carousel breakPoints={breakPoints} background="black">
 
                 <CaroselItem1 Img="https://cdn.plotch.io/image/upload/C/V/1671110155_NC5wbmc=.png" />
                 <CaroselItem1 Img="https://cdn.plotch.io/image/upload/C/V/1671110161_Mi5wbmc=.png" />
@@ -57,7 +41,7 @@ function Home() {
                 <CaroselItem1 Img="https://cdn.plotch.io/image/upload/C/V/1676286917_Q1JBRlRTVklMTEEyLU5FV0hFUk9CQU5ORVJTLnBuZw==.png" />
 
 
-            </Carousel> */}
+            </Carousel>
 
             <SimpleGrid bg="black" minChildWidth='120px' spacing='40px'>
                 <Box bg="black" height='120px'
