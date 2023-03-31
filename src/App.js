@@ -9,10 +9,7 @@ function App() {
   return (
     <div className="App">
       <Navbar/>
-      <HStack>
-     
       <SubNavbar  />
-      </HStack>
       <AllRouter/>
     </div>
   );
