@@ -6,6 +6,8 @@ import   Fashion from "../Pages/Fashion"
 import  BeautyPersonalCare from "../Pages/Beauty-Personal-Care"
 import  Electronics  from "../Pages/Electronics"
 import  HomeDecor  from "../Pages/Home-Decor"
+import  Login  from "../Pages/Login"
+import  Cart  from "../Pages/Cart"
 
 
 
@@ -19,8 +21,8 @@ function AllRouter(){
             <Route path="/beauty-personal-care" element={<BeautyPersonalCare/>}/>
             <Route path="/home-decor" element={<HomeDecor/>}/>
             <Route path="/electronics" element={<Electronics/>}/>
-            {/* <Route path="/login" element={<Login/>}/>
-            <Route path="/cart" element={<Cart/>}/> */}
+             <Route path="/login" element={<Login/>}/>
+            <Route path="/cart/:user_id" element={<Cart/>}/> 
             
         </Routes>
     )
