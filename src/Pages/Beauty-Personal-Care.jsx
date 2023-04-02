@@ -20,6 +20,7 @@ import {
     Checkbox, CheckboxGroup
 } from "@chakra-ui/react"
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 const getData = async () => {
@@ -55,7 +56,9 @@ const BeautyPersonalCare = () => {
         fetchAndUpadate();
     }, [])
 
-
+  const handleclick=(id)=>{
+    console.log(id)
+  }
     return loading ? (
         <h1>Loading...</h1>
     ) : error ? (
@@ -86,9 +89,9 @@ const BeautyPersonalCare = () => {
                                 flexDirection="column">
 
 
-                                <Checkbox defaultChecked>1000-2000</Checkbox>
-                                <Checkbox defaultChecked>500-999</Checkbox>
-                                <Checkbox defaultChecked>100-499</Checkbox>
+                                <Checkbox >1000-2000</Checkbox>
+                                <Checkbox >500-999</Checkbox>
+                                <Checkbox >100-499</Checkbox>
 
                             </AccordionPanel>
                         </AccordionItem>
@@ -96,7 +99,7 @@ const BeautyPersonalCare = () => {
                             <Heading>
                                 <AccordionButton>
                                     <Box flex='2' fontSize="20px" fontWeight="600" textAlign='left'>
-                                        Price
+                                        Category 
                                     </Box>
                                     <AccordionIcon />
                                 </AccordionButton>
@@ -105,18 +108,20 @@ const BeautyPersonalCare = () => {
                                 flexDirection="column">
 
 
-                                <Checkbox defaultChecked>1000-2000</Checkbox>
-                                <Checkbox defaultChecked>500-999</Checkbox>
-                                <Checkbox defaultChecked>100-499</Checkbox>
+                                <Checkbox >Commodities</Checkbox>
+                                <Checkbox >Packaged</Checkbox>
+                                <Checkbox >Snacks & Branded Foods</Checkbox>
 
                             </AccordionPanel>
                         </AccordionItem>
+
+                
 
                         <AccordionItem>
                             <Heading>
                                 <AccordionButton>
                                     <Box flex='2' fontSize="20px" fontWeight="600" textAlign='left'>
-                                        Price
+                                        Time To Ship
                                     </Box>
                                     <AccordionIcon />
                                 </AccordionButton>
@@ -125,30 +130,8 @@ const BeautyPersonalCare = () => {
                                 flexDirection="column">
 
 
-                                <Checkbox defaultChecked>1000-2000</Checkbox>
-                                <Checkbox defaultChecked>500-999</Checkbox>
-                                <Checkbox defaultChecked>100-499</Checkbox>
-
-                            </AccordionPanel>
-                        </AccordionItem>
-
-                        <AccordionItem>
-                            <Heading>
-                                <AccordionButton>
-                                    <Box flex='2' fontSize="20px" fontWeight="600" textAlign='left'>
-                                        Price
-                                    </Box>
-                                    <AccordionIcon />
-                                </AccordionButton>
-                            </Heading>
-                            <AccordionPanel pb={4} bg="white" display="flex"
-                                flexDirection="column">
-
-
-                                <Checkbox defaultChecked>1000-2000</Checkbox>
-                                <Checkbox defaultChecked>500-999</Checkbox>
-                                <Checkbox defaultChecked>100-499</Checkbox>
-
+                                <Checkbox >1 day 0 minutes</Checkbox>
+                               
                             </AccordionPanel>
                         </AccordionItem>
 
@@ -198,10 +181,10 @@ const BeautyPersonalCare = () => {
                                                     <Heading size='md' className="font-link" fontSize="15px">{user.name}</Heading>
 
                                                     <Text color='gold' fontSize='2xl' textAlign="center">
-                                                        {user.price.substring(0,20)}
+                                                        {user.price.substring(20)}
                                                     </Text>
-                                                    <Button variant='ghost' bg="#902735">
-                                                        Add to cart
+                                                    <Button variant='ghost' bg="#902735"  onClick={handleclick("1")}>
+                                                     Add to cart
                                                     </Button>
                                                 </Stack>
                                             </CardBody>

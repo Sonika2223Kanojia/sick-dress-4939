@@ -4,3 +4,29 @@
 .font-link{
   font-family: 'Poppins', sans-serif;
 }
+
+.pre-btn
+  {
+    border: none;
+    width: 60px;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    }
+
+ .next-btn{
+border: none;
+width: 60px;
+height: 40px;
+position: absolute;
+top: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.next-btn{
+  right: 0;
+}

@@ -7,6 +7,7 @@ import {
 import Carousel from 'react-elastic-carousel';
 import Card from "../CaroselItem1"
 import CaroselItem1 from "../CaroselItem1"
+import Imagecarousel from '../Components/Imagecarousel';
 // import Carousel from 'carousel-react-rcd
 
 
@@ -23,15 +24,18 @@ function Home() {
     ]
     return (
         <>
+
             <Center>
-                <Heading className="font-link"
+                <Heading pt={5} className="font-link"
                     fontWeight={400}
                     letterSpacing={2}
                 >Store Near Me</Heading>
             </Center>
             
-         
-
+    
+            {/* <Imagecarousel/> */}
+        
+    
             <Carousel breakPoints={breakPoints} background="black">
 
                 <CaroselItem1 Img="https://cdn.plotch.io/image/upload/C/V/1671110155_NC5wbmc=.png" />
@@ -105,6 +109,7 @@ function Home() {
             </Grid>
 
          
+         {/* //footer  */}
 
             <Grid
             className="font-link"
