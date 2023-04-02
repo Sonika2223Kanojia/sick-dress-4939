@@ -1,188 +1,271 @@
-import { Heading,
-    Grid,GridItem,
-    Text,Box,
-     HStack, 
-     VStack, 
-     SimpleGrid ,
-     Divider,
-     CardFooter,Card,
-     ButtonGroup,
-     Button,
-     CardBody,
-     Image,
-     Stack
-    } from "@chakra-ui/react"
+import {
+    Heading,
+    Grid, GridItem,
+    Text, Box,
+    HStack,
+    VStack,
+    SimpleGrid,
+    Divider,
+    CardFooter, Card,
+    ButtonGroup,
+    Button,
+    CardBody,
+    Image,
+    Stack,
+    Accordion,
+    AccordionItem,
+    AccordionButton,
+    AccordionPanel,
+    AccordionIcon,
+    Checkbox, CheckboxGroup
+} from "@chakra-ui/react"
+import React from "react";
 
+
+const getData = async () => {
+    try {
+        let res = await fetch(" http://localhost:8000/Beauty");
+        let data = await res.json();
+        return data;
+    } catch (e) {
+        console.log(e)
+    }
+}
 const BeautyPersonalCare = () => {
-    return (
+
+    const [data, setData] = React.useState([])
+    const [loading, setLoading] = React.useState(false)
+    const [error, setError] = React.useState(false)
+
+    const fetchAndUpadate = () => {
+        setLoading(true);
+        getData()
+            .then((res) => {
+                console.log(res)
+                setData(res)
+            })
+            .catch(() => {
+                setError(true)
+            })
+            .finally(() => {
+                setLoading(false)
+            })
+    }
+    React.useEffect(() => {
+        fetchAndUpadate();
+    }, [])
+
+
+    return loading ? (
+        <h1>Loading...</h1>
+    ) : error ? (
+        <h1>Somthing went wrong..</h1>
+    ) : (
         <>
-         <Box w="100%" h="40px"></Box>
-           <HStack>
-                <Box bg="red" w="20%"  minH="100vh">hello</Box>
-                <Box bg="red" w="80%"  minH="100vh">
-                       <VStack >
-                        <Box  bg="blue"   w="100%"  h="5vh">
-                              <SimpleGrid spacing={1}  display="flex">
-                                    <Box  h="5vh"  w="200px">
-                                        <Text  className="font-link" 
-                                        textAlign="center"  fontSize="20px" > Sort By: Popular</Text>
-                                       </Box>
-                                    <Box  h="5vh" >
-                                     <Text className="font-link"  w="220px" textAlign="center"  fontSize="20px">Price : Low to High</Text>   </Box>
-                                    <Box  h="5vh">
-                                        <Text className="font-link" w="220px" textAlign="center"  fontSize="20px">Price : High to Low</Text>
-                                        </Box>
-                                    <Box  h="5vh">
-                                        <Text className="font-link" w="130px" textAlign="center"  fontSize="20px">  Discount</Text>
-                                      </Box>
-                                    <Box  h="5vh">
-                                        <Text className="font-link"  w="200px" textAlign="center"  fontSize="20px">New Arrivals</Text>
-                                        </Box>
-                              </SimpleGrid>
+            <Box w="100%" h="40px"></Box>
+            <Box display="flex" width="100%">
+                <Box
+                    w="20%" h="auto" >
+
+                    <Heading w="80%" m="auto" fontSize="25px">
+                        Filters
+                    </Heading>
+                    <Divider></Divider>
+                    <Accordion borderRight="1px solid grey" w="80%" m="auto"
+                        defaultIndex={[0]} allowMultiple>
+                        <AccordionItem>
+                            <Heading>
+                                <AccordionButton>
+                                    <Box flex='2' fontSize="20px" fontWeight="600" textAlign='left'>
+                                        Price
+                                    </Box>
+                                    <AccordionIcon />
+                                </AccordionButton>
+                            </Heading>
+                            <AccordionPanel pb={4} bg="white" display="flex"
+                                flexDirection="column">
+
+
+                                <Checkbox defaultChecked>1000-2000</Checkbox>
+                                <Checkbox defaultChecked>500-999</Checkbox>
+                                <Checkbox defaultChecked>100-499</Checkbox>
+
+                            </AccordionPanel>
+                        </AccordionItem>
+                        <AccordionItem>
+                            <Heading>
+                                <AccordionButton>
+                                    <Box flex='2' fontSize="20px" fontWeight="600" textAlign='left'>
+                                        Price
+                                    </Box>
+                                    <AccordionIcon />
+                                </AccordionButton>
+                            </Heading>
+                            <AccordionPanel pb={4} bg="white" display="flex"
+                                flexDirection="column">
+
+
+                                <Checkbox defaultChecked>1000-2000</Checkbox>
+                                <Checkbox defaultChecked>500-999</Checkbox>
+                                <Checkbox defaultChecked>100-499</Checkbox>
+
+                            </AccordionPanel>
+                        </AccordionItem>
+
+                        <AccordionItem>
+                            <Heading>
+                                <AccordionButton>
+                                    <Box flex='2' fontSize="20px" fontWeight="600" textAlign='left'>
+                                        Price
+                                    </Box>
+                                    <AccordionIcon />
+                                </AccordionButton>
+                            </Heading>
+                            <AccordionPanel pb={4} bg="white" display="flex"
+                                flexDirection="column">
+
+
+                                <Checkbox defaultChecked>1000-2000</Checkbox>
+                                <Checkbox defaultChecked>500-999</Checkbox>
+                                <Checkbox defaultChecked>100-499</Checkbox>
+
+                            </AccordionPanel>
+                        </AccordionItem>
+
+                        <AccordionItem>
+                            <Heading>
+                                <AccordionButton>
+                                    <Box flex='2' fontSize="20px" fontWeight="600" textAlign='left'>
+                                        Price
+                                    </Box>
+                                    <AccordionIcon />
+                                </AccordionButton>
+                            </Heading>
+                            <AccordionPanel pb={4} bg="white" display="flex"
+                                flexDirection="column">
+
+
+                                <Checkbox defaultChecked>1000-2000</Checkbox>
+                                <Checkbox defaultChecked>500-999</Checkbox>
+                                <Checkbox defaultChecked>100-499</Checkbox>
+
+                            </AccordionPanel>
+                        </AccordionItem>
+
+
+                    </Accordion>
+
+
+                </Box>
+
+
+                {/* productpage */}
+                <Box w="80%" h="auto">
+                    <VStack >
+                        <Box w="100%" h="5vh">
+                            <SimpleGrid spacing={1} display="flex">
+                                <Box h="5vh" w="200px">
+                                    <Text className="font-link"
+                                        textAlign="center" fontSize="20px" > Sort By: Popular</Text>
+                                </Box>
+                                <Box h="5vh" >
+                                    <Text className="font-link" w="220px" textAlign="center" fontSize="20px">Price : Low to High</Text>   </Box>
+                                <Box h="5vh">
+                                    <Text className="font-link" w="220px" textAlign="center" fontSize="20px">Price : High to Low</Text>
+                                </Box>
+                                <Box h="5vh">
+                                    <Text className="font-link" w="130px" textAlign="center" fontSize="20px">  Discount</Text>
+                                </Box>
+                                <Box h="5vh">
+                                    <Text className="font-link" w="200px" textAlign="center" fontSize="20px">New Arrivals</Text>
+                                </Box>
+                            </SimpleGrid>
                         </Box>
-                         <Box  bg="blue"  w="100%"   h="auto">
-                             <Grid  gridTemplateColumns="repeat(4,1fr)"
-                             gridTemplateRows="auto">
-                                <GridItem  bg="yellow" >
-                                <Card  w="100%">
-  <CardBody>
-    <Image
-      src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-      alt='Green double couch with wooden legs'
-      borderRadius='lg'
-    />
-    <Stack mt='6' spacing='3'>
-      <Heading size='md'>Living room Sofa</Heading>
-      <Text>
-        This sofa is perfect for modern tropical spaces, baroque inspired
-        spaces, earthy toned spaces and for people who love a chic design with a
-        sprinkle of vintage design.
-      </Text>
-      <Text color='blue.600' fontSize='2xl'>
-        $450
-      </Text>
-    </Stack>
-  </CardBody>
-  <Divider />
-  <CardFooter>
-    <ButtonGroup spacing='2'>
-      <Button variant='solid' colorScheme='blue'>
-        Buy now
-      </Button>
-      <Button variant='ghost' colorScheme='blue'>
-        Add to cart
-      </Button>
-    </ButtonGroup>
-  </CardFooter>
-                                 </Card>
-                                </GridItem>
-                                <GridItem  bg="yellow" >
-                                <Card  w="100%">
-  <CardBody>
-    <Image
-      src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-      alt='Green double couch with wooden legs'
-      borderRadius='lg'
-    />
-    <Stack mt='6' spacing='3'>
-      <Heading size='md'>Living room Sofa</Heading>
-      <Text>
-        This sofa is perfect for modern tropical spaces, baroque inspired
-        spaces, earthy toned spaces and for people who love a chic design with a
-        sprinkle of vintage design.
-      </Text>
-      <Text color='blue.600' fontSize='2xl'>
-        $450
-      </Text>
-    </Stack>
-  </CardBody>
-  <Divider />
-  <CardFooter>
-    <ButtonGroup spacing='2'>
-      <Button variant='solid' colorScheme='blue'>
-        Buy now
-      </Button>
-      <Button variant='ghost' colorScheme='blue'>
-        Add to cart
-      </Button>
-    </ButtonGroup>
-  </CardFooter>
-                                 </Card>
-                                </GridItem>
-                                <GridItem  bg="yellow" >
-                                <Card  w="100%">
-  <CardBody>
-    <Image
-      src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-      alt='Green double couch with wooden legs'
-      borderRadius='lg'
-    />
-    <Stack mt='6' spacing='3'>
-      <Heading size='md'>Living room Sofa</Heading>
-      <Text>
-        This sofa is perfect for modern tropical spaces, baroque inspired
-        spaces, earthy toned spaces and for people who love a chic design with a
-        sprinkle of vintage design.
-      </Text>
-      <Text color='blue.600' fontSize='2xl'>
-        $450
-      </Text>
-    </Stack>
-  </CardBody>
-  <Divider />
-  <CardFooter>
-    <ButtonGroup spacing='2'>
-      <Button variant='solid' colorScheme='blue'>
-        Buy now
-      </Button>
-      <Button variant='ghost' colorScheme='blue'>
-        Add to cart
-      </Button>
-    </ButtonGroup>
-  </CardFooter>
-                                 </Card>
-                                </GridItem>
-                                <GridItem  bg="yellow" >
-                                <Card  w="100%">
-  <CardBody>
-    <Image
-      src='https://images.unsplash.com/photo-1555041469-a586c61ea9bc?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80'
-      alt='Green double couch with wooden legs'
-      borderRadius='lg'
-    />
-    <Stack mt='6' spacing='3'>
-      <Heading size='md'>Living room Sofa</Heading>
-      <Text>
-        This sofa is perfect for modern tropical spaces, baroque inspired
-        spaces, earthy toned spaces and for people who love a chic design with a
-        sprinkle of vintage design.
-      </Text>
-      <Text color='blue.600' fontSize='2xl'>
-        $450
-      </Text>
-    </Stack>
-  </CardBody>
-  <Divider />
-  <CardFooter>
-    <ButtonGroup spacing='2'>
-      <Button variant='solid' colorScheme='blue'>
-        Buy now
-      </Button>
-      <Button variant='ghost' colorScheme='blue'>
-        Add to cart
-      </Button>
-    </ButtonGroup>
-  </CardFooter>
-                                 </Card>
-                                </GridItem>
-                             </Grid>
-                             </Box>
-                       </VStack>
+                        {/* showproduct */}
+                        <Box w="100%" h="auto" pl="20px" pr="50px">
+                            <Grid gridTemplateColumns="repeat(4,1fr)" rowGap="10px" columnGap="5px">
+                                {data.map((user) => (
+                                    <GridItem  >
+
+                                        <Card w="100%" h="400px" 
+                                            _hover={{ boxShadow: '1px 2px 9px #696969', }}  key={user.id}>
+                                            <CardBody   >
+                                                <Image h="200px" objectFit='cover'
+                                                    src={user.image} alt='Green double couch with wooden legs'
+
+                                                />
+                                                <Stack mt='5' spacing='2'>
+                                                    <Heading size='md' className="font-link" fontSize="15px">{user.name}</Heading>
+
+                                                    <Text color='gold' fontSize='2xl' textAlign="center">
+                                                        {user.price.substring(0,20)}
+                                                    </Text>
+                                                    <Button variant='ghost' bg="#902735">
+                                                        Add to cart
+                                                    </Button>
+                                                </Stack>
+                                            </CardBody>
+
+                                        </Card>
+                                    </GridItem>
+                                ))}
+                            </Grid>
+                        </Box>
+                    </VStack>
+
+                </Box>
+
+            </Box    >
+            {/* emptybox  */}
+            <Box w="100%" h="100px"></Box>
+
+            {/* footer 
+             */}
+            <Grid
+                className="font-link"
+                gridTemplateRows="repeat(1,1fr)"
+                gridTemplateColumns="repeat(4,1fr)"
+                gap={7} bg="#902735" pl="130px" pr="100px">
+                <GridItem w='100%' h='400'>
+                    <Box pt="20px" color="white" >
+                        <Text fontSize="20px" fontWeight={600} lineHeight="40px" >About Us</Text>
+                        <Text fontSize="15px" fontWeight={600}>India's most convenient online grocery channel Buyerapp Fresh and Smart makes your grocery shopping even simpler. No more hassles of sweating it out in crowded markets, grocery shops & supermarkets - now shop from the comfort of your home; office, or on the move. We offer you the convenience of shopping for everything that you need for your home - be it fresh fruits & vegetables, rice, dals, oil, packaged food, dairy item, frozen, pet food, household cleaning items & personal care
+                            products from a single virtual store.</Text>
+                        <Text fontSize="20px" fontWeight={600} lineHeight="40px">PAYMENT OPTIONS</Text>
 
                     </Box>
-           </HStack>
+                </GridItem>
+                <GridItem w='100%' h='400'>
+                    <Box pt="20px" color="white" >
+                        <Text fontSize="18px" fontWeight={600} lineHeight="40px">OUR COMPANY</Text>
+                        <Text fontSize="15px" fontWeight={500} lineHeight="40px">About Us</Text>
+                        <Text fontSize="15px" fontWeight={500} >Contact Us</Text>
+
+                    </Box>
+                </GridItem>
+                <GridItem w='100%' h='400'>
+
+                    <Box pt="20px" color="white" >
+                        <Text fontSize="18px" fontWeight={600} lineHeight="40px">TOP CATEGORIES</Text>
+                        <Text fontSize="15px" fontWeight={500}>Grocery</Text>
+
+                    </Box>
+                </GridItem>
+                <GridItem w='100%' h='400' >
+                    <Box pt="20px" color="white" >
+                        <Text fontSize="18px" fontWeight={600} lineHeight="40px">POLICIES & INFO</Text>
+                        <Text fontSize="15px" fontWeight={500}>Privacy Policy</Text>
+                        <Text fontSize="15px" fontWeight={600}>SUPPORT</Text>
+                        <Text fontSize="15px" fontWeight={600}>For Help, send an email to care@craftsvilla.com
+
+                        </Text>
+
+                    </Box>
+                </GridItem>
+
+            </Grid>
         </>
-         
+
     )
 }
 
